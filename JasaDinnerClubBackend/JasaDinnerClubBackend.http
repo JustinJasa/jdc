@@ -1,0 +1,6 @@
+@JasaDinnerClubBackend_HostAddress = http://localhost:5217
+
+GET {{JasaDinnerClubBackend_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
