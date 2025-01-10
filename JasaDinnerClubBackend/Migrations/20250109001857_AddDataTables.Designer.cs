@@ -4,6 +4,7 @@ using JasaDinnerClubBackend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JasaDinnerClubBackend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250109001857_AddDataTables")]
+    partial class AddDataTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,6 +44,14 @@ namespace JasaDinnerClubBackend.Migrations
                     b.HasKey("AttendeeId");
 
                     b.ToTable("Attendee");
+
+                    b.HasData(
+                        new
+                        {
+                            AttendeeId = 1,
+                            AttendeeName = "John Doe",
+                            AttendeeNumber = "123-456-7890"
+                        });
                 });
 
             modelBuilder.Entity("JasaDinnerClubBackend.Models.Booking", b =>
@@ -70,6 +81,15 @@ namespace JasaDinnerClubBackend.Migrations
                     b.HasIndex("DinnerEventDinnerId");
 
                     b.ToTable("Bookings");
+
+                    b.HasData(
+                        new
+                        {
+                            BookingId = 1,
+                            AttendeeId = 1,
+                            DinnerId = 1,
+                            Request = "Vegetarian meal"
+                        });
                 });
 
             modelBuilder.Entity("JasaDinnerClubBackend.Models.DinnerEvent", b =>
@@ -100,6 +120,17 @@ namespace JasaDinnerClubBackend.Migrations
                     b.HasKey("DinnerId");
 
                     b.ToTable("DinnerEvents");
+
+                    b.HasData(
+                        new
+                        {
+                            DinnerId = 1,
+                            Capacity = 6,
+                            Date = new DateTime(2025, 1, 9, 0, 0, 0, 0, DateTimeKind.Local),
+                            Description = "Exclusive wine tasting",
+                            Name = "Wine Night",
+                            Time = new TimeSpan(0, 19, 0, 0, 0)
+                        });
                 });
 
             modelBuilder.Entity("JasaDinnerClubBackend.Models.Booking", b =>

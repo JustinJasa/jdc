@@ -1,6 +1,7 @@
 using JasaDinnerClubBackend.Data;
 using JasaDinnerClubBackend.Models;
 using Microsoft.EntityFrameworkCore;
+using Dapper;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,8 +23,20 @@ var app = builder.Build();
 
 //Get Requests
 app.MapGet("/bookings", async (AppDbContext db) => await db.Bookings.ToListAsync());
-app.MapGet("/dinners", async (AppDbContext db) => await db.Bookings.ToListAsync());
-app.MapGet("/attendees", async (AppDbContext db) => await db.Bookings.ToListAsync());
+app.MapGet("/bookings/{id}", async (int id, AppDbContext db) =>
+{
+    // Fetch a booking with the specified ID
+    var booking = await db.Bookings
+                          .Include(b => b.DinnerEvent)  // Optional: Include related DinnerEvent
+                          .Include(b => b.Attendee)    // Optional: Include related Attendee
+                          .FirstOrDefaultAsync(b => b.BookingId == id);
+
+    // Return 404 if booking is not found
+    return booking is not null ? Results.Ok(booking) : Results.NotFound();
+});
+
+app.MapGet("/dinners", async (AppDbContext db) => await db.DinnerEvents.ToListAsync());
+app.MapGet("/attendees", async (AppDbContext db) => await db.Attendee.ToListAsync());
 
 
 // Configure the HTTP request pipeline.

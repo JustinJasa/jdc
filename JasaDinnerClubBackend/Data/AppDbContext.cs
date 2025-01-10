@@ -21,38 +21,5 @@ public class AppDbContext : DbContext
 
         modelBuilder.Entity<DinnerEvent>().HasKey(de => de.DinnerId);
 
-        // Seed DinnerEvent data
-        modelBuilder.Entity<DinnerEvent>().HasData(
-            new DinnerEvent
-            {
-                DinnerId = 1,
-                Name = "Wine Night",
-                Date = DateTime.Today,
-                Time = TimeSpan.FromHours(19),
-                Capacity = 6,
-                Description = "Exclusive wine tasting"
-            }
-        );
-
-        // Optional: Seed related Booking data
-        modelBuilder.Entity<Booking>().HasData(
-            new Booking
-            {
-                BookingId = 1,
-                DinnerId = 1, // Foreign key
-                AttendeeId = 1, // Foreign key
-                Request = "Vegetarian meal"
-            }
-        );
-
-        // Optional: Seed Attendee data
-        modelBuilder.Entity<Attendee>().HasData(
-            new Attendee
-            {
-                AttendeeId = 1,
-                AttendeeName = "John Doe",
-                AttendeeNumber = "123-456-7890"
-            }
-        );
     }
 }
