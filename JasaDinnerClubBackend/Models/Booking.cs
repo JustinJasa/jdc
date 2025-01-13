@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 
 namespace JasaDinnerClubBackend.Models;
-public class Booking 
+public class Booking
 {
 
     [Required]
@@ -9,15 +9,15 @@ public class Booking
 
     [Required]
     public int DinnerId {get; set;}
-    public DinnerEvent? DinnerEvent { get; set; } // Navigation property
+    
+    public required DinnerEvent DinnerEvent { get; set; } // Navigation property
 
     [Required]
     public int AttendeeId {get; set;}
 
-    public Attendee? Attendee { get; set; } // Navigation property
+    public required Attendee Attendee { get; set; } // Navigation property
 
     public string? Request {get; set;}
 
-    
 
 }

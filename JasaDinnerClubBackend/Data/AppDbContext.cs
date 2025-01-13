@@ -14,10 +14,16 @@ public class AppDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        // // Optional: Seed some initial data
-        // modelBuilder.Entity<DinnerEvent>().HasData(
-        //     new DinnerEvent { DinnerId = 1, Name = "Wine Night", Date = DateTime.Today, Time = TimeSpan.FromHours(19), Capacity = 20, Description = "Exclusive wine tasting" }
-        // );
+        
+        modelBuilder.Entity<Booking>()
+            .HasOne(b => b.Attendee)
+            .WithMany(a => a.Bookings)
+            .HasForeignKey(b => b.AttendeeId);
+
+        modelBuilder.Entity<Booking>()
+            .HasOne(b => b.DinnerEvent)
+            .WithMany(d => d.Bookings)
+            .HasForeignKey(b => b.DinnerId);
 
         modelBuilder.Entity<DinnerEvent>().HasKey(de => de.DinnerId);
 

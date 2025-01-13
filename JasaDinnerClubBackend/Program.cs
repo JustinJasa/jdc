@@ -1,7 +1,8 @@
 using JasaDinnerClubBackend.Data;
-using JasaDinnerClubBackend.Models;
 using Microsoft.EntityFrameworkCore;
-using Dapper;
+using JasaDinnerClubBackend.Models;
+using Mapster;
+
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,22 +22,28 @@ var app = builder.Build();
 
 // Map Endpoints
 
-//Get Requests
+//Booking Requests
 app.MapGet("/bookings", async (AppDbContext db) => await db.Bookings.ToListAsync());
 app.MapGet("/bookings/{id}", async (int id, AppDbContext db) =>
 {
-    // Fetch a booking with the specified ID
     var booking = await db.Bookings
-                          .Include(b => b.DinnerEvent)  // Optional: Include related DinnerEvent
-                          .Include(b => b.Attendee)    // Optional: Include related Attendee
-                          .FirstOrDefaultAsync(b => b.BookingId == id);
+                          .Include(b => b.DinnerEvent)
+                          .Include(b => b.Attendee)
+                          .Where(b => b.BookingId == id)
+                          .ProjectToType<BookingDto>() // Use Mapster's projection
+                          .FirstOrDefaultAsync();
 
-    // Return 404 if booking is not found
     return booking is not null ? Results.Ok(booking) : Results.NotFound();
 });
 
+//Dinner Requests
 app.MapGet("/dinners", async (AppDbContext db) => await db.DinnerEvents.ToListAsync());
+app.MapGet("/dinners/{id}", async (int id, AppDbContext db) => await db.DinnerEvents.FindAsync(id) is DinnerEvent dinner ? Results.Ok(dinner) : Results.NotFound());
+
+
+//Attendees Requests
 app.MapGet("/attendees", async (AppDbContext db) => await db.Attendee.ToListAsync());
+app.MapGet("/attendees/{id}", async (int id, AppDbContext db) => await db.Attendee.FindAsync(id) is Attendee attendee ? Results.Ok(attendee) : Results.NotFound());
 
 
 // Configure the HTTP request pipeline.
