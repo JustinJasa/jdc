@@ -24,3 +24,4 @@ public class DinnerEvent
     // Navigation property: A list of bookings for this dinner event
     public List<Booking>? Bookings { get; set; }
 }
+
