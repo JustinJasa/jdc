@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("JasaDinnerClubBackend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6c43d983decd93ab09261205f04aac39fdaf393f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+202ab1d14acf328e4b409ec2dea45919094e1130")]
 [assembly: System.Reflection.AssemblyProductAttribute("JasaDinnerClubBackend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("JasaDinnerClubBackend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -5,8 +5,6 @@ using Mapster;
 using JasaDinnerClubBackend.Utils;
 using Microsoft.AspNetCore.Mvc;
 
-
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

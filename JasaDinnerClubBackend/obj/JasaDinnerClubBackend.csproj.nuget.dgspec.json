@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/jasa/Desktop/All Folders/dotnet learnings/JustinsMiniRestaurant/JasaDinnerClubBackend/JasaDinnerClubBackend.csproj": {}
+    "/Users/jasa/Desktop/All Folders/dotnet learnings/JustinsMiniRestaurant/jdc/JasaDinnerClubBackend/JasaDinnerClubBackend.csproj": {}
   },
   "projects": {
-    "/Users/jasa/Desktop/All Folders/dotnet learnings/JustinsMiniRestaurant/JasaDinnerClubBackend/JasaDinnerClubBackend.csproj": {
+    "/Users/jasa/Desktop/All Folders/dotnet learnings/JustinsMiniRestaurant/jdc/JasaDinnerClubBackend/JasaDinnerClubBackend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/jasa/Desktop/All Folders/dotnet learnings/JustinsMiniRestaurant/JasaDinnerClubBackend/JasaDinnerClubBackend.csproj",
+        "projectUniqueName": "/Users/jasa/Desktop/All Folders/dotnet learnings/JustinsMiniRestaurant/jdc/JasaDinnerClubBackend/JasaDinnerClubBackend.csproj",
         "projectName": "JasaDinnerClubBackend",
-        "projectPath": "/Users/jasa/Desktop/All Folders/dotnet learnings/JustinsMiniRestaurant/JasaDinnerClubBackend/JasaDinnerClubBackend.csproj",
+        "projectPath": "/Users/jasa/Desktop/All Folders/dotnet learnings/JustinsMiniRestaurant/jdc/JasaDinnerClubBackend/JasaDinnerClubBackend.csproj",
         "packagesPath": "/Users/jasa/.nuget/packages/",
-        "outputPath": "/Users/jasa/Desktop/All Folders/dotnet learnings/JustinsMiniRestaurant/JasaDinnerClubBackend/obj/",
+        "outputPath": "/Users/jasa/Desktop/All Folders/dotnet learnings/JustinsMiniRestaurant/jdc/JasaDinnerClubBackend/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/jasa/.nuget/NuGet/NuGet.Config"
